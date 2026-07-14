@@ -1,0 +1,15 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #f9fafb;
+    --primary: #6366f1;
+    --primary-foreground: #ffffff;
+    --secondary: #1a202c;
+    --secondary-foreground: #f9fafb;
+    --muted: #111827;
+    --muted-foreground: #a0aec0;
+    --accent: #ed8936;
+    --accent-foreground: #ffffff;
+    --border: #2d3748;
+  }
+}

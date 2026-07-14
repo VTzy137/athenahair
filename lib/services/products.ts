@@ -1,5 +1,5 @@
 import { slugify } from "@/lib/utils";
-import type { Product } from "@/types/product";
+import type { Product } from "@/lib/types/product";
 
 type ProductRow = Omit<Product, "slug">;
 

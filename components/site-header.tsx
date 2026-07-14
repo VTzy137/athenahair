@@ -10,6 +10,7 @@ const nav = [
   { href: "/shop", label: "Shop" },
   { href: "/about", label: "About" },
   { href: "/cart", label: "Cart" },
+  { href: "/settings", label: "Settings" },
 ] as const;
 
 export function SiteHeader() {

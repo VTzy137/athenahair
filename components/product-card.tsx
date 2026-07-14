@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Product } from "@/types/product";
+import type { Product } from "@/lib/types/product";
 import { formatUsdFromCents } from "@/lib/utils/currency";
 
 type Props = {

@@ -1,0 +1,13 @@
+:root {
+  --background: #ffffff;
+  --foreground: #111827; /* gray9 */
+  --primary: #4f46e5;    /* indigo6 */
+  --primary-foreground: #ffffff;
+  --secondary: #f3f4f6;  /* gray2 */
+  --secondary-foreground: #111827;
+  --muted: #f9fafb;      /* gray1 */
+  --muted-foreground: #4b5563; /* gray6 */
+  --accent: #ed8936;     /* orange5 */
+  --accent-foreground: #ffffff;
+  --border: #edf2f7;     /* gray2 */
+}
