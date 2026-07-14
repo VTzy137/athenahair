@@ -2,6 +2,8 @@ import Link from "next/link";
 import { ProductCard } from "@/components/product-card";
 import { SITE_NAME } from "@/lib/constants/site";
 import { getProducts } from "@/lib/services/products";
+import Icon from "@/components/icon";
+import { ICONS } from "@/lib/constants/icon";
 
 export default async function Home() {
   const products = await getProducts();
@@ -10,9 +12,10 @@ export default async function Home() {
   return (
     <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col px-4 py-16">
       <h1 className="text-3xl font-semibold tracking-tight">{SITE_NAME} market</h1>
+      {/* add .svg  */}
+      <Icon src={ICONS.globe} alt="globe" width={20} height={20} />
       <p className="mt-3 max-w-xl text-lg text-foreground/70">
-        Featured products from this repo service layer. Click any product to open
-        its detail page.
+        Featured products from this repo service layer. Click any product to open its detail page.
       </p>
 
       <ul className="mt-10 grid gap-8 sm:grid-cols-2">

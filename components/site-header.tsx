@@ -8,6 +8,7 @@ import { useMarketStore } from "@/stores/use-market-store";
 const nav = [
   { href: "/", label: "Home" },
   { href: "/shop", label: "Shop" },
+  { href: "/about", label: "About" },
   { href: "/cart", label: "Cart" },
 ] as const;
 

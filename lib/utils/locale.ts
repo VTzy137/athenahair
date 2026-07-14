@@ -1,113 +1,71 @@
-/**
- * Simple web-based locale code detection utility.
- * Can be used for language and currency in the future.
- * 
- * Search Keywords:
- * - locale code
- * - language code
- * - currency code
- */
+import {
+  DEFAULT_LOCALE,
+  LOCALE_MESSAGES,
+  type LocaleCode,
+  type LocaleKey,
+} from '@/lib/i18n/messages';
 
-// --- Priority Definitions ---
+export type {  LocaleCode, LocaleKey };
 
-export enum WebLocaleSource {
-  NAVIGATOR_LANGUAGES = 'NAVIGATOR_LANGUAGES',
-  NAVIGATOR_LANGUAGE = 'NAVIGATOR_LANGUAGE',
-  DOCUMENT_ELEMENT = 'DOCUMENT_ELEMENT',
-  DEFAULT = 'DEFAULT'
+export const USER_LOCALE = createUserLocale();
+
+export function getTimezone(): string {
+  return USER_LOCALE.timeZone;
 }
 
-export const LOCALE_DETECTION_PRIORITY: WebLocaleSource[] = [
-  WebLocaleSource.NAVIGATOR_LANGUAGES,
-  WebLocaleSource.NAVIGATOR_LANGUAGE,
-  WebLocaleSource.DOCUMENT_ELEMENT,
-  WebLocaleSource.DEFAULT
-];
-
-// --- Simple Retrieval Functions ---
-
-export function getLocaleFromLanguages(): string | null {
-  if (typeof navigator !== 'undefined' && navigator.languages && navigator.languages.length > 0) {
-    return navigator.languages[0];
-  }
-  return null;
-}
-
-export function getLocaleFromLanguage(): string | null {
-  if (typeof navigator !== 'undefined' && navigator.language) {
-    return navigator.language;
-  }
-  return null;
-}
-
-export function getLocaleFromDocument(): string | null {
-  if (typeof document !== 'undefined' && document.documentElement && document.documentElement.lang) {
-    return document.documentElement.lang;
-  }
-  return null;
-}
-
-export function getDefaultLocale(): string {
-  return 'en-US';
-}
-
-// --- Main Core Function ---
-
-/**
- * Get the current locale code from the web environment.
- */
 export function getLocale(): string {
-  for (const source of LOCALE_DETECTION_PRIORITY) {
-    let locale: string | null = null;
-    switch (source) {
-      case WebLocaleSource.NAVIGATOR_LANGUAGES:
-        locale = getLocaleFromLanguages();
-        break;
-      case WebLocaleSource.NAVIGATOR_LANGUAGE:
-        locale = getLocaleFromLanguage();
-        break;
-      case WebLocaleSource.DOCUMENT_ELEMENT:
-        locale = getLocaleFromDocument();
-        break;
-      case WebLocaleSource.DEFAULT:
-        locale = getDefaultLocale();
-        break;
-    }
-    if (locale) return locale;
-  }
-  return getDefaultLocale();
+  return USER_LOCALE.locale;
 }
 
-// --- Future Extensions (Language and Currency) ---
-
-/**
- * Extracts the language code from a given locale code.
- */
-export function getLanguageFromLocale(locale: string): string {
-  if (!locale) return 'en';
-  return locale.split('-')[0].split('_')[0].toLowerCase();
+export function getLanguageAndRegion(): { language: string; region: string | null } {
+  return {
+    language: USER_LOCALE.language,
+    region: USER_LOCALE.region,
+  };
 }
 
-/**
- * Maps a locale code to a currency code.
- */
-export function getCurrencyFromLocale(locale: string): string {
-  const lang = getLanguageFromLocale(locale);
-  switch (lang) {
-    case 'ja': return 'JPY';
-    case 'zh': return 'CNY';
-    case 'fr':
-    case 'de':
-    case 'it':
-    case 'es': return 'EUR';
-    case 'vi': return 'VND';
-    case 'ko': return 'KRW';
-    case 'en':
-      if (locale.toLowerCase().includes('gb')) return 'GBP';
-      if (locale.toLowerCase().includes('ca')) return 'CAD';
-      if (locale.toLowerCase().includes('au')) return 'AUD';
-      return 'USD';
-    default:
-      return 'USD';
+export function getLocaleString(key: LocaleKey, locale?: string): string {
+  const localeCode = resolveLocaleCode(locale);
+  const dictionary = LOCALE_MESSAGES[localeCode] ?? LOCALE_MESSAGES[DEFAULT_LOCALE];
+  const value = dictionary[key];
+
+  if (typeof value === 'string' && value.length > 0) {
+    return value;
   }
+
+  return LOCALE_MESSAGES[DEFAULT_LOCALE][key] ?? key;
+}
+
+export function resolveLocaleCode(locale?: string): LocaleCode {
+  return locale === undefined ? USER_LOCALE.localeCode : resolveLocaleCodeFromString(locale);
+}
+
+function resolveLocaleCodeFromString(locale: string): LocaleCode {
+  if (locale in LOCALE_MESSAGES) {
+    return locale as LocaleCode;
+  }
+
+  const language = locale.split('-')[0];
+  if (language in LOCALE_MESSAGES) {
+    return language as LocaleCode;
+  }
+
+  return DEFAULT_LOCALE;
+}
+
+function createUserLocale() {
+  const locale =
+    typeof navigator !== 'undefined' && navigator.language
+      ? navigator.language
+      : Intl.DateTimeFormat().resolvedOptions().locale;
+  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const parts = locale.split('-');
+
+  return {
+    locale,
+    language: parts[0],
+    region: parts[1] ?? null,
+    timeZone,
+    localeCode: resolveLocaleCodeFromString(locale),
+  } as const;
 }

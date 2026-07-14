@@ -1,5 +1,6 @@
 export type Product = {
   id: string;
+  /** Slug for the product */
   slug: string;
   name: string;
   /** Short line for cards and meta */
