@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SITE_NAME } from "@/lib/constants/site";
-import { useMarketStore } from "@/stores/use-market-store";
+import { useMarketStore } from "@/lib/stores/use-market-store";
 
 const nav = [
-  { href: "/", label: "Home" },
+  { href: "/home", label: "Home" },
   { href: "/shop", label: "Shop" },
   { href: "/about", label: "About" },
   { href: "/cart", label: "Cart" },
@@ -21,7 +21,7 @@ export function SiteHeader() {
     <header className="border-b border-black/10 dark:border-white/10">
       <div className="mx-auto flex max-w-4xl items-center justify-between gap-6 px-4 py-4">
         <Link
-          href="/"
+          href="/home"
           className="font-semibold tracking-tight text-foreground"
         >
           {SITE_NAME}
@@ -29,8 +29,8 @@ export function SiteHeader() {
         <nav className="flex items-center gap-4 text-sm">
           {nav.map(({ href, label }) => {
             const active =
-              href === "/"
-                ? pathname === "/"
+              href === "/home"
+                ? pathname === "/" || pathname === "/home"
                 : href === "/shop"
                   ? pathname === "/shop" || pathname.startsWith("/products")
                   : pathname === href || pathname.startsWith(`${href}/`);
@@ -53,5 +53,21 @@ export function SiteHeader() {
         </nav>
       </div>
     </header>
+  );
+}
+
+function TextRoute() {
+  return (
+    <Link href="/home" className="font-semibold tracking-tight text-foreground">
+      {SITE_NAME}
+    </Link>
+  );
+}
+
+function IconRoute() {
+  return (
+    <Link href="/home" className="font-semibold tracking-tight text-foreground">
+      {SITE_NAME}
+    </Link>
   );
 }

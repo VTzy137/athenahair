@@ -1,6 +1,6 @@
 "use client";
 
-import { useMarketStore } from "@/stores/use-market-store";
+import { useMarketStore } from "@/lib/stores/use-market-store";
 
 export function CartEmptyState() {
   const count = useMarketStore((s) => s.cartItemCount);

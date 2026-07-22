@@ -1,21 +1,22 @@
 import { openDB, type IDBPDatabase } from 'idb';
 
 
-const enum LOCAL_STORAGE {
+export const enum LOCAL_STORAGE {
   TOKEN = 'token',
   LOCALE = 'locale',
   THEME = 'theme',
-}
-
-const enum SESSION_STORAGE {
   CART = 'cart',
 }
 
-const enum CACHE_STORAGE {
+export const enum SESSION_STORAGE {
+  TimeSession = 'open_session_time',
+}
+
+export const enum CACHE_STORAGE {
   STATIC_ASSETS = 'static_assets',
 }
 
-const enum INDEXED_DB_STORAGE {
+export const enum INDEXED_DB_STORAGE {
   USER_VIEW = 'user_view',
   USER_CLICK = 'user_click',
   IMAGE = 'image',
@@ -37,11 +38,17 @@ export function setLocalStorage(key: LOCAL_STORAGE, value: any): void {
   }
 }
 
+export function getLocalStorage<T>(key: LOCAL_STORAGE): T | null;
+export function getLocalStorage<T>(key: LOCAL_STORAGE, defaultValue: T): T;
 export function getLocalStorage<T>(key: LOCAL_STORAGE, defaultValue?: T): T | null {
   try {
-    return JSON.parse(localStorage.getItem(key) || JSON.stringify(defaultValue));
+    const item = localStorage.getItem(key);
+    if (item === null) {
+      return defaultValue !== undefined ? defaultValue : null;
+    }
+    return JSON.parse(item);
   } catch (error) {
-    return defaultValue ?? null;
+    return defaultValue !== undefined ? defaultValue : null;
   }
 }
 
@@ -57,11 +64,17 @@ export function setSessionStorage(key: SESSION_STORAGE, value: any): void {
   }
 }
 
+export function getSessionStorage<T>(key: SESSION_STORAGE): T | null;
+export function getSessionStorage<T>(key: SESSION_STORAGE, defaultValue: T): T;
 export function getSessionStorage<T>(key: SESSION_STORAGE, defaultValue?: T): T | null {
   try {
-    return JSON.parse(sessionStorage.getItem(key) || JSON.stringify(defaultValue));
+    const item = sessionStorage.getItem(key);
+    if (item === null) {
+      return defaultValue !== undefined ? defaultValue : null;
+    }
+    return JSON.parse(item);
   } catch (error) {
-    return defaultValue ?? null;
+    return defaultValue !== undefined ? defaultValue : null;
   }
 }
 
@@ -86,12 +99,21 @@ export async function setCache(key: CACHE_STORAGE, value: string): Promise<void>
   await cache.put(key, new Response(value));
 }
 
-export async function getCache(key: CACHE_STORAGE): Promise<string | null> {
+export async function getCache<T = string>(key: CACHE_STORAGE): Promise<T | null>;
+export async function getCache<T = string>(key: CACHE_STORAGE, defaultValue: T): Promise<T>;
+export async function getCache<T = string>(key: CACHE_STORAGE, defaultValue?: T): Promise<T | null> {
   const cache = await openCache(key);
-  if (!cache) return null;
+  if (!cache) return defaultValue !== undefined ? defaultValue : null;
 
   const response = await cache.match(key);
-  return response ? response.text() : null;
+  if (!response) return defaultValue !== undefined ? defaultValue : null;
+
+  const text = await response.text();
+  try {
+    return JSON.parse(text) as T;
+  } catch {
+    return text as unknown as T;
+  }
 }
 
 
@@ -109,10 +131,19 @@ function openIndexedDBStorage(name: INDEXED_DB_STORAGE, keyPath: string): Promis
   });
 }
 
-async function saveIndexedDB(key: INDEXED_DB_STORAGE, keyPath: string  , value: any): Promise<void> {
+export async function setIndexedDB(key: INDEXED_DB_STORAGE, keyPath: string, value: any): Promise<void> {
   const db = await openIndexedDBStorage(key, keyPath);
   if (!db) return;
   await db.put(key, value);
+}
+
+export async function getIndexedDB<T>(key: INDEXED_DB_STORAGE, keyPath: string, id: IDBValidKey): Promise<T | null>;
+export async function getIndexedDB<T>(key: INDEXED_DB_STORAGE, keyPath: string, id: IDBValidKey, defaultValue: T): Promise<T>;
+export async function getIndexedDB<T>(key: INDEXED_DB_STORAGE, keyPath: string, id: IDBValidKey, defaultValue?: T): Promise<T | null> {
+  const db = await openIndexedDBStorage(key, keyPath);
+  if (!db) return defaultValue !== undefined ? defaultValue : null;
+  const result = await db.get(key, id);
+  return result !== undefined ? result : (defaultValue !== undefined ? defaultValue : null);
 }
 
 
