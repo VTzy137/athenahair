@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { SiteHeader } from "@/components/site-header";
+import { SiteHeader } from "@/components/SiteHeader";
+import { ThemeInitializer } from "@/components/ThemeInitializer";
 import { SITE_NAME } from "@/lib/constants/site";
 import "@/lib/themes/globals.css";
 
@@ -31,9 +32,10 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col font-sans">
-        {/* <CursorAnimation /> */}
+      <body className="flex min-h-full flex-col font-sans bg-background text-foreground transition-colors duration-200">
+        <ThemeInitializer />
         <SiteHeader />
         <div className="flex flex-1 flex-col">{children}</div>
       </body>

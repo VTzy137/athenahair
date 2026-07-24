@@ -3,9 +3,8 @@ import { openDB, type IDBPDatabase } from 'idb';
 
 export const enum LOCAL_STORAGE {
   TOKEN = 'token',
-  LOCALE = 'locale',
-  THEME = 'theme',
   CART = 'cart',
+  SETTINGS = 'settings',
 }
 
 export const enum SESSION_STORAGE {

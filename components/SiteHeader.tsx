@@ -11,7 +11,7 @@ const nav = [
   { href: "/about", label: "About" },
   { href: "/cart", label: "Cart" },
   { href: "/settings", label: "Settings" },
-] as const;
+];
 
 export function SiteHeader() {
   const pathname = usePathname();

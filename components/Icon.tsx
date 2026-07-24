@@ -12,12 +12,7 @@ export default function Icon({
   width?: number;
   height?: number;
 }) {
-  return (
-    <Image
-      src={src}
-      alt={alt}
-      width={width}
-      height={height}
-    />
-  );
+  return <Image src={src} alt={alt} width={width} height={height} />;
 }
+
+// <Icon src={ICONS.globe} alt="globe" width={20} height={20} />

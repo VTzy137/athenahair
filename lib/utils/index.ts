@@ -1,3 +1,8 @@
+/** Class name utility for merging conditional classes */
+export function cn(...classes: (string | undefined | null | false | boolean)[]): string {
+  return classes.filter(Boolean).join(" ");
+}
+
 /** URL-safe slug for routes and filenames */
 export function slugify(value: string): string {
   return value
@@ -8,3 +13,4 @@ export function slugify(value: string): string {
     .replace(/-+/g, "-")
     .replace(/^-|-$/g, "");
 }
+

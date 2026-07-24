@@ -1,6 +1,15 @@
 @import "tailwindcss";
 @import "./light.css";
 @import "./dark.css";
+@import "./color.css";
+
+@layer base {
+  html,
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+}
 
 @theme {
   --color-background: var(--background);
