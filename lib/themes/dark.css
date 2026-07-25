@@ -11,6 +11,8 @@
   --accent: #ed8936;
   --accent-foreground: #ffffff;
   --border: #2d3748;
+  --tertiary: #f12f86;
+  --tertiary-foreground: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,5 +28,7 @@
     --accent: #ed8936;
     --accent-foreground: #ffffff;
     --border: #2d3748;
+    --tertiary: #f12f86;
+    --tertiary-foreground: #ffffff;
   }
 }

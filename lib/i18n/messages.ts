@@ -82,3 +82,5 @@ export const LOCALE_MESSAGES = {
 
 export type LocaleCode = keyof typeof LOCALE_MESSAGES;
 export type LocaleKey = keyof (typeof LOCALE_MESSAGES)[typeof DEFAULT_LOCALE];
+
+export const SUPPORTED_LOCALES = Object.keys(LOCALE_MESSAGES) as LocaleCode[];
