@@ -4,13 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SITE_NAME } from "@/lib/constants/site";
 import { useMarketStore } from "@/lib/stores/use-market-store";
+import { localeString, type LocaleKey } from "@/lib/utils/locale";
 
-const nav = [
-  { href: "/home", label: "Home" },
-  { href: "/shop", label: "Shop" },
-  { href: "/about", label: "About" },
-  { href: "/cart", label: "Cart" },
-  { href: "/settings", label: "Settings" },
+const NAV_ITEMS: { href: string; key: LocaleKey }[] = [
+  { href: "/shop", key: "shop" },
+  { href: "/about", key: "about" },
+  { href: "/cart", key: "cart" },
+  { href: "/settings", key: "settings" },
 ];
 
 export function SiteHeader() {
@@ -27,7 +27,8 @@ export function SiteHeader() {
           {SITE_NAME}
         </Link>
         <nav className="flex items-center gap-4 text-sm">
-          {nav.map(({ href, label }) => {
+          {NAV_ITEMS.map(({ href, key }) => {
+            const label = localeString(key);
             const active =
               href === "/home"
                 ? pathname === "/" || pathname === "/home"
@@ -44,7 +45,7 @@ export function SiteHeader() {
                     : "text-foreground/70 transition-colors hover:text-foreground"
                 }
               >
-                {label === "Cart" && cartItemCount > 0
+                {key === "cart" && cartItemCount > 0
                   ? `${label} (${cartItemCount})`
                   : label}
               </Link>
@@ -53,21 +54,5 @@ export function SiteHeader() {
         </nav>
       </div>
     </header>
-  );
-}
-
-function TextRoute() {
-  return (
-    <Link href="/home" className="font-semibold tracking-tight text-foreground">
-      {SITE_NAME}
-    </Link>
-  );
-}
-
-function IconRoute() {
-  return (
-    <Link href="/home" className="font-semibold tracking-tight text-foreground">
-      {SITE_NAME}
-    </Link>
   );
 }

@@ -43,5 +43,10 @@
   "hours": "stundas",
   "days": "dienas",
   "months": "mēneši",
-  "years": "gadi"
+  "years": "gadi",
+  "home": "Sākums",
+  "shop": "Veikals",
+  "about": "Par mums",
+  "cart": "Grozs",
+  "settings": "Iestatījumi"
 }

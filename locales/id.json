@@ -43,5 +43,10 @@
   "hours": "jam",
   "days": "hari",
   "months": "bulan",
-  "years": "tahun"
+  "years": "tahun",
+  "home": "Beranda",
+  "shop": "Toko",
+  "about": "Tentang",
+  "cart": "Keranjang",
+  "settings": "Pengaturan"
 }

@@ -43,5 +43,10 @@
   "hours": "godzin",
   "days": "dni",
   "months": "miesięcy",
-  "years": "lat"
+  "years": "lat",
+  "home": "Strona główna",
+  "shop": "Sklep",
+  "about": "O nas",
+  "cart": "Koszyk",
+  "settings": "Ustawienia"
 }

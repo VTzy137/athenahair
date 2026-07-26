@@ -43,5 +43,10 @@
   "hours": "uren",
   "days": "dagen",
   "months": "maanden",
-  "years": "jaren"
+  "years": "jaren",
+  "home": "Start",
+  "shop": "Winkel",
+  "about": "Over",
+  "cart": "Winkelwagen",
+  "settings": "Instellingen"
 }

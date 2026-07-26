@@ -43,5 +43,10 @@
   "hours": "tuntia",
   "days": "päivää",
   "months": "kuukautta",
-  "years": "vuotta"
+  "years": "vuotta",
+  "home": "Koti",
+  "shop": "Kauppa",
+  "about": "Tietoja",
+  "cart": "Ostoskori",
+  "settings": "Asetukset"
 }

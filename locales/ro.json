@@ -43,5 +43,10 @@
   "hours": "ore",
   "days": "zile",
   "months": "luni",
-  "years": "ani"
+  "years": "ani",
+  "home": "Acasă",
+  "shop": "Magazin",
+  "about": "Despre",
+  "cart": "Coș",
+  "settings": "Setări"
 }

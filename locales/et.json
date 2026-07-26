@@ -43,5 +43,10 @@
   "hours": "tundi",
   "days": "päeva",
   "months": "kuud",
-  "years": "aastat"
+  "years": "aastat",
+  "home": "Avaleht",
+  "shop": "Pood",
+  "about": "Teave",
+  "cart": "Ostukorv",
+  "settings": "Seaded"
 }

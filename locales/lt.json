@@ -43,5 +43,10 @@
   "hours": "valandos",
   "days": "dienos",
   "months": "mėnesiai",
-  "years": "metai"
+  "years": "metai",
+  "home": "Pradžia",
+  "shop": "Parduotuvė",
+  "about": "Apie",
+  "cart": "Krepšelis",
+  "settings": "Nustatymai"
 }

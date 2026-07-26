@@ -43,5 +43,10 @@
   "hours": "horas",
   "days": "dias",
   "months": "meses",
-  "years": "anos"
+  "years": "anos",
+  "home": "Início",
+  "shop": "Loja",
+  "about": "Sobre",
+  "cart": "Carrinho",
+  "settings": "Definições"
 }

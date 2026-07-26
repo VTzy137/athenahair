@@ -43,5 +43,10 @@
   "hours": "timer",
   "days": "dage",
   "months": "måneder",
-  "years": "år"
+  "years": "år",
+  "home": "Hjem",
+  "shop": "Butik",
+  "about": "Om",
+  "cart": "Kurv",
+  "settings": "Indstillinger"
 }

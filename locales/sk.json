@@ -43,5 +43,10 @@
   "hours": "hodín",
   "days": "dni",
   "months": "mesiacov",
-  "years": "rokov"
+  "years": "rokov",
+  "home": "Domov",
+  "shop": "Obchod",
+  "about": "O nás",
+  "cart": "Košík",
+  "settings": "Nastavenia"
 }

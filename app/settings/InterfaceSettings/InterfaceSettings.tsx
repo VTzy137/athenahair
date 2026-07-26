@@ -2,10 +2,7 @@ import Icon from "@/components/Icon";
 import { Column } from "@/components/Layout";
 import { ICONS } from "@/lib/constants/icon";
 import { useSettingsStore } from "@/lib/stores/use-settings-store";
-import {
-  getAvailableLanguages,
-  getLocaleString,
-} from "@/lib/utils/locale";
+import { getAvailableLanguages, localeString } from "@/lib/utils/locale";
 
 export function ThemeSettings() {
   const theme = useSettingsStore((state) => state.theme);
@@ -118,7 +115,10 @@ export function LanguageSettings() {
             Selected Language
           </p>
           <p className="mt-2 font-medium text-foreground">
-            {currentLang.nativeName} <span className="text-xs text-muted-foreground">({currentLang.code})</span>
+            {currentLang.nativeName}{" "}
+            <span className="text-xs text-muted-foreground">
+              ({currentLang.code})
+            </span>
           </p>
         </div>
         <div className="rounded-xl border border-border bg-background p-4">
@@ -126,7 +126,7 @@ export function LanguageSettings() {
             System Label
           </p>
           <p className="mt-2 font-medium text-foreground">
-            {getLocaleString("system", language)}
+            {localeString("system")}
           </p>
         </div>
         <div className="rounded-xl border border-border bg-background p-4">
@@ -134,7 +134,8 @@ export function LanguageSettings() {
             Time Units
           </p>
           <p className="mt-2 text-xs font-medium text-foreground">
-            {getLocaleString("days", language)}, {getLocaleString("hours", language)}, {getLocaleString("minutes", language)}
+            {localeString("days")}, {localeString("hours")},{" "}
+            {localeString("minutes")}
           </p>
         </div>
       </div>

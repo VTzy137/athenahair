@@ -1,6 +1,9 @@
 "use client";
 
-import { ThemeSettings, LanguageSettings } from "./InterfaceSettings/InterfaceSettings";
+import {
+  ThemeSettings,
+  LanguageSettings,
+} from "./InterfaceSettings/InterfaceSettings";
 
 export function SettingsPage() {
   return (

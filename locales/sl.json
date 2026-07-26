@@ -43,5 +43,10 @@
   "hours": "ur",
   "days": "dni",
   "months": "mesecev",
-  "years": "let"
+  "years": "let",
+  "home": "Domov",
+  "shop": "Trgovina",
+  "about": "O nas",
+  "cart": "Košarica",
+  "settings": "Nastavitve"
 }

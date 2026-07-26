@@ -43,5 +43,10 @@
   "hours": "hodin",
   "days": "dní",
   "months": "měsíců",
-  "years": "let"
+  "years": "let",
+  "home": "Domů",
+  "shop": "Obchod",
+  "about": "O nás",
+  "cart": "Košík",
+  "settings": "Nastavení"
 }

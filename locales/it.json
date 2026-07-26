@@ -43,5 +43,10 @@
   "hours": "ore",
   "days": "giorni",
   "months": "mesi",
-  "years": "anni"
+  "years": "anni",
+  "home": "Home",
+  "shop": "Negozio",
+  "about": "Informazioni",
+  "cart": "Carrello",
+  "settings": "Impostazioni"
 }

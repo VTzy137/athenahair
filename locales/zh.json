@@ -43,5 +43,10 @@
   "hours": "小时",
   "days": "天",
   "months": "个月",
-  "years": "年"
+  "years": "年",
+  "home": "首页",
+  "shop": "商店",
+  "about": "关于",
+  "cart": "购物车",
+  "settings": "设置"
 }

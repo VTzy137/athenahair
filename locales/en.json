@@ -43,5 +43,10 @@
   "hours": "hours",
   "days": "days",
   "months": "months",
-  "years": "years"
+  "years": "years",
+  "home": "Home",
+  "shop": "Shop",
+  "about": "About",
+  "cart": "Cart",
+  "settings": "Settings"
 }

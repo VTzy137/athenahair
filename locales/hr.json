@@ -43,5 +43,10 @@
   "hours": "sati",
   "days": "dana",
   "months": "mjeseci",
-  "years": "godina"
+  "years": "godina",
+  "home": "Početna",
+  "shop": "Trgovina",
+  "about": "O nama",
+  "cart": "Košarica",
+  "settings": "Postavke"
 }

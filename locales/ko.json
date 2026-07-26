@@ -43,5 +43,10 @@
   "hours": "시간",
   "days": "일",
   "months": "개월",
-  "years": "년"
+  "years": "년",
+  "home": "홈",
+  "shop": "쇼핑",
+  "about": "소개",
+  "cart": "장바구니",
+  "settings": "설정"
 }

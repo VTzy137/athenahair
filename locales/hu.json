@@ -43,5 +43,10 @@
   "hours": "óra",
   "days": "nap",
   "months": "hónap",
-  "years": "év"
+  "years": "év",
+  "home": "Kezdőlap",
+  "shop": "Bolt",
+  "about": "Rólunk",
+  "cart": "Kosár",
+  "settings": "Beállítások"
 }

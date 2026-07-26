@@ -43,5 +43,10 @@
   "hours": "saat",
   "days": "gün",
   "months": "ay",
-  "years": "yıl"
+  "years": "yıl",
+  "home": "Ana Sayfa",
+  "shop": "Mağaza",
+  "about": "Hakkında",
+  "cart": "Sepet",
+  "settings": "Ayarlar"
 }

@@ -4,6 +4,8 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { ThemeInitializer } from "@/components/ThemeInitializer";
 import { SITE_NAME } from "@/lib/constants/site";
 import "@/lib/themes/globals.css";
+import { ChatBox } from "@/components/ChatBox";
+import { DelayRender } from "@/components/DelayRender";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,6 +40,9 @@ export default function RootLayout({
         <ThemeInitializer />
         <SiteHeader />
         <div className="flex flex-1 flex-col">{children}</div>
+        <DelayRender>
+          <ChatBox />
+        </DelayRender>
       </body>
     </html>
   );
