@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Icon from "@/components/Icon";
+import { Icon } from "@/components/Icon";
 import { ICONS } from "@/lib/constants/icon";
 
 export type ChatProvider = "crisp" | "tawk" | "whatsapp" | "none";

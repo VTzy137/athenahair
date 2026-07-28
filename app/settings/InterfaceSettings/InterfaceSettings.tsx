@@ -1,12 +1,25 @@
-import Icon from "@/components/Icon";
-import { Column } from "@/components/Layout";
+import { Icon } from "@/components/Icon";
+import { Column } from "@/components/Components";
 import { ICONS } from "@/lib/constants/icon";
 import { useSettingsStore } from "@/lib/stores/use-settings-store";
 import { getAvailableLanguages, localeString } from "@/lib/utils/locale";
+import { applyThemeToDocument } from "@/lib/utils/settings";
+import { useEffect } from "react";
+
+export function ApplySettingToSite() {
+  const theme = useSettingsStore((state) => state.theme);
+
+  useEffect(() => {
+    applyThemeToDocument(theme);
+  }, [theme]);
+
+  return <></>;
+}
 
 export function ThemeSettings() {
   const theme = useSettingsStore((state) => state.theme);
   const setTheme = useSettingsStore((state) => state.setTheme);
+
   return (
     <Column>
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
@@ -29,7 +42,6 @@ export function ThemeSettings() {
             <Icon src={ICONS.sun} alt="Light theme" width={18} height={18} />
             Light
           </button>
-
           <button
             onClick={() => setTheme("dark")}
             className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all ${
@@ -40,6 +52,22 @@ export function ThemeSettings() {
           >
             <Icon src={ICONS.moon} alt="Dark theme" width={18} height={18} />
             Dark
+          </button>
+          <button
+            onClick={() => setTheme("system")}
+            className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all ${
+              theme === "system"
+                ? "bg-primary text-primary-foreground shadow-sm"
+                : "text-muted-foreground hover:bg-muted hover:text-foreground"
+            }`}
+          >
+            <Icon
+              src={ICONS.systemTheme}
+              alt="System theme"
+              width={18}
+              height={18}
+            />
+            System
           </button>
         </div>
       </div>

@@ -5,11 +5,13 @@ import { usePathname } from "next/navigation";
 import { SITE_NAME } from "@/lib/constants/site";
 import { useMarketStore } from "@/lib/stores/use-market-store";
 import { localeString, type LocaleKey } from "@/lib/utils/locale";
+import { PageWrapper } from "@/components/Layout";
 
 const NAV_ITEMS: { href: string; key: LocaleKey }[] = [
   { href: "/shop", key: "shop" },
   { href: "/about", key: "about" },
   { href: "/cart", key: "cart" },
+  { href: "/blog", key: "cart" },
   { href: "/settings", key: "settings" },
 ];
 
@@ -19,7 +21,7 @@ export function SiteHeader() {
 
   return (
     <header className="border-b border-black/10 dark:border-white/10">
-      <div className="mx-auto flex max-w-4xl items-center justify-between gap-6 px-4 py-4">
+      <PageWrapper className="flex items-center justify-between gap-6 py-4">
         <Link
           href="/home"
           className="font-semibold tracking-tight text-foreground"
@@ -52,7 +54,7 @@ export function SiteHeader() {
             );
           })}
         </nav>
-      </div>
+      </PageWrapper>
     </header>
   );
 }

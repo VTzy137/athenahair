@@ -1,8 +1,9 @@
 import Link from "next/link";
+import { PageWrapper } from "@/components/Layout";
 
 export default function NotFound() {
   return (
-    <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col px-4 py-16">
+    <PageWrapper className="flex w-full flex-1 flex-col py-16">
       <h1 className="text-2xl font-semibold">Not found</h1>
       <Link
         href="/home"
@@ -10,7 +11,7 @@ export default function NotFound() {
       >
         ← Home
       </Link>
-    </main>
+    </PageWrapper>
   );
 }
 

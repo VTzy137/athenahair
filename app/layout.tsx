@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { SiteHeader } from "@/components/SiteHeader";
-import { ThemeInitializer } from "@/components/ThemeInitializer";
+import { SiteHeader } from "@/app/SiteHeader";
 import { SITE_NAME } from "@/lib/constants/site";
 import "@/lib/themes/globals.css";
 import { ChatBox } from "@/components/ChatBox";
-import { DelayRender } from "@/components/DelayRender";
+import { SiteFooter } from "./SiteFooter";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,12 +36,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col font-sans bg-background text-foreground transition-colors duration-200">
-        <ThemeInitializer />
         <SiteHeader />
         <div className="flex flex-1 flex-col">{children}</div>
-        <DelayRender>
-          <ChatBox />
-        </DelayRender>
+        <ChatBox />
+        <SiteFooter />
       </body>
     </html>
   );

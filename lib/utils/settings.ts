@@ -1,13 +1,12 @@
-import { Themes } from "../stores/use-settings-store";
+import { setLocalStorage, LOCAL_STORAGE } from "../system/storage";
+import { Themes } from "../types/site";
 
 export const applyThemeToDocument = (theme: Themes) => {
   if (typeof window === 'undefined') return;
   const root = document.documentElement;
-  if (theme === 'dark') {
-    root.classList.add('dark');
-    root.classList.remove('light');
-  } else {
-    root.classList.add('light');
-    root.classList.remove('dark');
-  }
+  root.classList.remove('light');
+  root.classList.remove('dark');
+  root.classList.remove('system');
+  root.classList.add(theme);
+  setLocalStorage(LOCAL_STORAGE.THEME, theme);
 };

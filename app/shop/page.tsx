@@ -1,11 +1,12 @@
 import { ProductCard } from "@/components/ProductCard";
 import { getProducts } from "@/lib/services/products";
+import { PageWrapper } from "@/components/Layout";
 
 export default async function ShopPage() {
   const products = await getProducts();
 
   return (
-    <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col px-4 py-16">
+    <PageWrapper className="flex w-full flex-1 flex-col py-16">
       <h1 className="text-2xl font-semibold">Shop</h1>
       <p className="mt-2 max-w-xl text-foreground/70">
         Loaded on the server via{" "}
@@ -19,6 +20,6 @@ export default async function ShopPage() {
           </li>
         ))}
       </ul>
-    </main>
+    </PageWrapper>
   );
 }

@@ -6,8 +6,8 @@ import {
   setLocalStorage,
   removeLocalStorage,
 } from "../system/storage";
-
-export type Themes = 'dark' | 'light';
+import { Themes } from "../types/site";
+import { applyThemeToDocument } from "../utils/settings";
 
 export interface SettingsState {
   language: string;
@@ -24,16 +24,22 @@ export type SettingsStore = SettingsState & SettingsActions;
 
 const DEFAULT_SETTINGS: SettingsState = {
   language: 'en',
-  theme: 'dark',
+  theme: 'light',
 };
 
 export const useSettingsStore = create<SettingsStore>()(
   persist(
     (set) => ({
       ...DEFAULT_SETTINGS,
-      setSettings: (settings: SettingsState) => set({ ...settings }),
-      setTheme: (theme: Themes) => set({ theme }),
+      setSettings: (settings: SettingsState) => {
+        if (settings.theme) applyThemeToDocument(settings.theme);
+        set({ ...settings });
+      },
       setLanguage: (language: string) => set({ language }),
+      setTheme: (theme: Themes) => {
+        applyThemeToDocument(theme);
+        set({ theme });
+      },
     }),
     {
       name: LOCAL_STORAGE.SETTINGS,

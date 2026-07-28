@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { formatUsdFromCents } from "@/lib/utils/currency";
 import { getProductBySlug, getProducts } from "@/lib/services/products";
 import { ProductPageProps } from "./page";
+import { PageWrapper } from "@/components/Layout";
 
 export async function generateStaticParams() {
   const products = await getProducts();
@@ -34,7 +35,7 @@ export async function ProductPage({ params }: ProductPageProps) {
   }
 
   return (
-    <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-10">
+    <PageWrapper className="w-full flex-1 py-10">
       <Link
         href="/shop"
         className="text-sm text-foreground/70 underline-offset-4 hover:text-foreground hover:underline"
@@ -74,6 +75,6 @@ export async function ProductPage({ params }: ProductPageProps) {
           </p>
         </div>
       </div>
-    </main>
+    </PageWrapper>
   );
 }

@@ -2,13 +2,14 @@ import Link from "next/link";
 import { ProductCard } from "@/components/ProductCard";
 import { SITE_NAME } from "@/lib/constants/site";
 import { getProducts } from "@/lib/services/products";
+import { PageWrapper } from "@/components/Layout";
 
 export default async function HomePage() {
   const products = await getProducts();
   const featuredProducts = products.slice(0, 2);
 
   return (
-    <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col px-4 py-16">
+    <PageWrapper className="flex w-full flex-1 flex-col py-16">
       <h1 className="text-3xl font-semibold tracking-tight text-pink-400">
         {SITE_NAME} market
       </h1>
@@ -31,6 +32,6 @@ export default async function HomePage() {
       >
         View all products in shop →
       </Link>
-    </main>
+    </PageWrapper>
   );
 }
