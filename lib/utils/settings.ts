@@ -9,4 +9,7 @@ export const applyThemeToDocument = (theme: Themes) => {
   root.classList.remove('system');
   root.classList.add(theme);
   setLocalStorage(LOCAL_STORAGE.THEME, theme);
+  if (typeof window !== 'undefined' && window.$crisp) {
+    window.$crisp.push(["config", "color:mode", [theme]]);
+  }
 };

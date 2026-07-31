@@ -8,10 +8,12 @@ import {
 } from "../system/storage";
 import { Themes } from "../types/site";
 import { applyThemeToDocument } from "../utils/settings";
+import { ChatProvider } from "@/components/ChatBox";
 
 export interface SettingsState {
   language: string;
   theme: Themes;
+  chatbox: ChatProvider;
 }
 
 export interface SettingsActions {
@@ -25,6 +27,7 @@ export type SettingsStore = SettingsState & SettingsActions;
 const DEFAULT_SETTINGS: SettingsState = {
   language: 'en',
   theme: 'light',
+  chatbox: 'crisp',
 };
 
 export const useSettingsStore = create<SettingsStore>()(

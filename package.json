@@ -5,8 +5,9 @@
   "scripts": {
     "scripts:sync": "node scripts/sync-locales.js",
     "scripts:icons": "node scripts/generate-icons.js",
-    "dev": "yarn scripts:sync && yarn scripts:icons && next dev",
-    "build": "yarn scripts:sync && yarn scripts:icons && next build",
+    "scripts:images": "node scripts/generate-images.js",
+    "dev": "next dev",
+    "build": "yarn scripts:sync && yarn scripts:icons && yarn scripts:images && next build",
     "start": "next start",
     "lint": "eslint"
   },

@@ -7,6 +7,7 @@ export enum LOCAL_STORAGE {
   SETTINGS = 'settings',
   THEME = 'theme',
   LANGUAGE = 'language',
+  GENERAL = 'general',
 }
 export type LocalStorageKey = LOCAL_STORAGE | `${LOCAL_STORAGE}`;
 

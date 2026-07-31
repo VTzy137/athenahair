@@ -1,0 +1,88 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(4, 8, 20, 0.65);
+    backdrop-filter: blur(12px);
+
+    z-index: 9999;
+}
+
+.modal {
+    width: min(1100px, 90vw);
+    max-height: 90vh;
+
+    overflow: auto;
+
+    background: #0d1323;
+
+    border: 1px solid #1d4b82;
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 30px rgba(241,47,134,.25),
+        inset 0 0 20px rgba(255,255,255,.03);
+}
+
+.overlay {
+    opacity: 0;
+    pointer-events: none;
+    transition: .25s;
+}
+
+.overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal {
+    transform: translateY(30px) scale(.97);
+    opacity: 0;
+    transition: .25s;
+}
+
+.overlay.open .modal {
+    transform: none;
+    opacity: 1;
+}
+
+/* nội dung bên trong modal */
+.modal_content {
+    padding: 40px;
+    color: #e5e7eb;
+}
+
+/* hiệu ứng fade in cho modal */
+.fade_in {
+    animation: fadeIn .25s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* tối ưu cho mobile */
+@media (max-width: 768px) {
+    .modal {
+        width: 95vw;
+        max-height: 95vh;
+        padding: 20px;
+    }
+    .modal_content {
+        padding: 30px 20px;
+    }
+}
+
+/* ẩn thanh cuộn */
+.modal::-webkit-scrollbar {
+    display: none;
+}
+.modal {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
